@@ -1,0 +1,20 @@
+# For available configuration options, see:
+#   https://github.com/testdouble/standard
+ignore:
+  - '**/*':
+    - Style/TrailingCommaInArguments
+    - Style/TrailingCommaInArrayLiteral
+    - Style/TrailingCommaInHashLiteral
+    - Style/CommentedKeyword
+  - '*/app/controllers/**/*':
+    - Style/RedundantAssignment
+  - '*/app/models/webhooks/outgoing/delivery_attempt.rb':
+    - Lint/RescueException
+  - '*/app/models/billing/mock_limiter.rb':
+    - Style/RedundantInitialize
+  - '*/app/models/webhooks/outgoing/delivery_attempt.rb':
+    - Lint/RescueException # TODO would it be okay to rescue `StandardError`?
+  - '*/lib/scaffolding/transformer.rb':
+    - Layout/EndAlignment
+  - '*/config/routes.rb':
+    - Lint/UselessAssignment
