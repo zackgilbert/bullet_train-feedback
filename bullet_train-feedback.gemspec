@@ -1,10 +1,12 @@
+require_relative "lib/bullet_train/feedback/version"
+
 Gem::Specification.new do |spec|
-  spec.name = "bullet_train-api"
-  spec.version = BulletTrain::Api::VERSION
-  spec.authors = ["Andrew Culver"]
-  spec.email = ["andrew.culver@gmail.com"]
-  spec.homepage = "https://github.com/bullet-train-co/bullet_train-core/tree/main/bullet_train-api"
-  spec.summary = "Bullet Train API"
+  spec.name = "bullet_train-feedback"
+  spec.version = BulletTrain::Feedback::VERSION
+  spec.authors = ["Zack Gilbert"]
+  spec.email = ["zackgilbert@gmail.com"]
+  spec.homepage = "https://github.com/zackgilbert/bullet_train-feedback"
+  spec.summary = "Bullet Train Feedback Widget"
   spec.description = spec.summary
   spec.license = "MIT"
 
@@ -17,20 +19,12 @@ Gem::Specification.new do |spec|
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    Dir["{app,config,db,lib,docs}/**/*", "MIT-LICENSE", "Rakefile", "README.md", ".bt-link"]
+    Dir["{app,config,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
   spec.add_development_dependency "standard"
 
-  spec.add_dependency "bullet_train-super_scaffolding"
-  spec.add_dependency "bullet_train"
-
   spec.add_dependency "rails", ">= 6.0.0"
-  spec.add_dependency "pagy"
-  spec.add_dependency "pagy_cursor"
-  spec.add_dependency "rack-cors"
-  spec.add_dependency "doorkeeper"
-  spec.add_dependency "jbuilder-schema", "~> 2.6.6"
-  spec.add_dependency "colorizer"
-  spec.add_dependency "factory_bot"
+  spec.add_dependency "bullet_train"
+  spec.add_dependency "bullet_train-themes-light"
 end
