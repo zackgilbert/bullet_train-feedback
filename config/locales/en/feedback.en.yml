@@ -1,3 +1,109 @@
 en:
-  feedback:
+  feedback: &feedback
     button: Help
+    label: &label Feedback
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fal fa-puzzle-piece
+    buttons: &buttons
+      new: Add New Feedback
+      create: Create Feedback
+      edit: Edit Feedback
+      update: Update Feedback
+      destroy: Remove Feedback
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{feedback_name}? This will also remove any child resources and can't be undone.
+    feedback:
+      buttons: *buttons
+    fields: &fields
+      id:
+        heading: Feedback ID
+      team_id:
+        heading: Team ID
+      giver_id: &giver
+        _: &giver_id Giver
+        label: *giver_id
+        heading: *giver_id
+        placeholder: Select
+      giver: *giver
+      url:
+        _: &url Url
+        label: *url
+        heading: *url
+      user_feedback:
+        _: &user_feedback User Feedback
+        label: *user_feedback
+        heading: *user_feedback
+      user_info:
+        _: &user_info User Info
+        label: *user_info
+        heading: *user_info
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Feedback"
+      index: "List Feedback"
+      create: "Add a New Feedback"
+      member_actions: "Actions for an Individual Feedback"
+      show: "Retrieve a Feedback"
+      update: "Update a Feedback"
+      destroy: "Delete a Feedback"
+      fields: *fields
+    index:
+      section: "%{teams_possessive} Feedback"
+      contexts:
+        team:
+          header: Feedback
+          description: Below is a list of Feedback that have been added for %{team_name}.
+          description_empty: No Feedback have been added for %{team_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{feedback_name}"
+      header: Feedback Details
+      description: Below are the details we have for %{feedback_name}.
+      manage_description: You'll also find options for updating these details or removing %{feedback_name} from %{team_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Feedback for %{team_name}"
+      header: New Feedback Details
+      description: Please provide the details of the new Feedback you'd like to add to %{team_name}.
+      form: *form
+    edit:
+      section: "%{feedback_name}"
+      header: Edit Feedback Details
+      description: You can update the details or settings for %{feedback_name} below.
+      form: *form
+    notifications:
+      created: Feedback was successfully created.
+      updated: Feedback was successfully updated.
+      destroyed: Feedback was successfully destroyed.
+  account:
+    feedback: *feedback
+  activerecord:
+    attributes:
+      feedback:
+        giver_id: *giver_id
+        url: *url
+        user_feedback: *user_feedback
+        user_info: *user_info
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at
