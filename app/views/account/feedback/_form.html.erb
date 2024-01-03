@@ -1,4 +1,4 @@
-<% cancel_path ||= feedback.persisted? ? [:account, feedback] : [:account, @team, :feedback] %>
+<% cancel_path ||= :back || (feedback.persisted? ? [:account, feedback] : [:account, @team, :feedback]) %>
 
 <%= form_with model: feedback, url: (feedback.persisted? ? [:account, feedback] : [:account, @team, :feedback]), local: true, class: 'form' do |form| %>
   <%= render "shared/limits/form", form: form, cancel_path: cancel_path do %>

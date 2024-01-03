@@ -29,6 +29,7 @@ class Account::FeedbackController < Account::ApplicationController
       if @feedback.save
         format.html { redirect_to [:account, @feedback], notice: I18n.t("feedback.notifications.created") }
         format.json { render :show, status: :created, location: [:account, @feedback] }
+        format.turbo_stream { flash.now[:notice] = I18n.t("feedback.notifications.created") }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
