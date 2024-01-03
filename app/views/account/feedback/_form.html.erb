@@ -1,0 +1,23 @@
+<% cancel_path ||= feedback.persisted? ? [:account, feedback] : [:account, @team, :feedback] %>
+
+<%= form_with model: feedback, url: (feedback.persisted? ? [:account, feedback] : [:account, @team, :feedback]), local: true, class: 'form' do |form| %>
+  <%= render "shared/limits/form", form: form, cancel_path: cancel_path do %>
+    <%= render 'account/shared/forms/errors', form: form %>
+
+    <% with_field_settings form: form do %>
+      <%= form.hidden_field :giver_id, value: current_membership&.id %>
+      <%= form.hidden_field :url, value: params[:original_url] || request.referrer %>
+      <%= form.hidden_field :request_uuid, value: params[:request_uuid] %>
+      <%= form.hidden_field :request_method, value: params[:request_method] %>
+      <%= form.hidden_field :request_params, value: params[:request_params] %>
+      <%= form.hidden_field :user_agent, value: request.user_agent %>
+      <%= form.hidden_field :remote_ip, value: request.remote_ip %>
+      <%= render 'shared/fields/trix_editor', method: :user_feedback, other_options: { hide_label: true } %>
+    <% end %>
+
+    <div class="buttons">
+      <%= form.submit (form.object.persisted? ? t('.buttons.update') : t('.buttons.create')), class: "button" %>
+      <%= link_to t('global.buttons.cancel'), cancel_path, class: "button-secondary" %>
+    </div>
+  <% end %>
+<% end %>

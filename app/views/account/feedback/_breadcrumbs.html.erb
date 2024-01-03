@@ -1,0 +1,8 @@
+<% feedback ||= @feedback %>
+<% team ||= @team || feedback&.team %>
+<%= render 'account/teams/breadcrumbs', team: team %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, team, :feedback] %>
+<% if feedback&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: feedback.label_string, url: [:account, feedback] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'feedback' %>
