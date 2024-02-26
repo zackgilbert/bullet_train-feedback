@@ -1,4 +1,6 @@
 <%= render 'account/shared/page' do |page| %>
-  <% page.title t('.section') %>
-  <% page.body.render 'index', feedback: @feedback %>
+  <% page.title do %>
+    <%= t('.section') %>
+  <% end %>
+  <% page.body.render 'index', feedback: @feedback, hide_back: true %>
 <% end %>

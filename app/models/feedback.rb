@@ -26,5 +26,9 @@ class Feedback < ApplicationRecord
     Membership.all
   end
 
+  def label_string
+    giver&.name || "Unknown Member"
+  end
+
   # 🚅 add methods above.
 end

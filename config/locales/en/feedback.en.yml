@@ -18,7 +18,7 @@ en:
         destroy: Delete
       confirmations:
         # TODO customize for your use-case.
-        destroy: Are you sure you want to remove %{feedback_name}? This will also remove any child resources and can't be undone.
+        destroy: Are you sure you want to remove this feedback %{feedback_name}? This will also remove any child resources and can't be undone.
     feedback:
       buttons: *buttons
     fields: &fields
@@ -26,6 +26,8 @@ en:
         heading: Feedback ID
       team_id:
         heading: Team ID
+      team:
+          heading: Team
       giver_id: &giver
         _: &giver_id Giver
         label: *giver_id
@@ -37,13 +39,33 @@ en:
         label: *url
         heading: *url
       user_feedback:
-        _: &user_feedback User Feedback
+        _: &user_feedback Feedback
         label: *user_feedback
         heading: *user_feedback
       user_info:
         _: &user_info User Info
         label: *user_info
         heading: *user_info
+      request_uuid:
+        _: &request_uuid Request UUID
+        label: *request_uuid
+        heading: *request_uuid
+      request_method:
+        _: &request_method Request Method
+        label: *request_method
+        heading: *request_method
+      request_params:
+        _: &request_params Request Params
+        label: *request_params
+        heading: *request_params
+      user_agent:
+        _: &user_agent User Agent
+        label: *user_agent
+        heading: *user_agent
+      remote_ip:
+        _: &remote_ip Remote IP
+        label: *remote_ip
+        heading: *remote_ip
       # 🚅 super scaffolding will insert new fields above this line.
       created_at:
         _: &created_at Added
@@ -56,45 +78,45 @@ en:
     api:
       collection_actions: "Collection Actions for Feedback"
       index: "List Feedback"
-      create: "Add a New Feedback"
-      member_actions: "Actions for an Individual Feedback"
-      show: "Retrieve a Feedback"
-      update: "Update a Feedback"
-      destroy: "Delete a Feedback"
+      create: "Add New Feedback"
+      member_actions: "Actions for Feedback"
+      show: "Retrieve Feedback"
+      update: "Update Feedback"
+      destroy: "Delete Feedback"
       fields: *fields
     index:
-      section: "%{teams_possessive} Feedback"
+      section: "Feedback"
       contexts:
         team:
           header: Feedback
-          description: Below is a list of Feedback that have been added for %{team_name}.
-          description_empty: No Feedback have been added for %{team_name}.
+          description: Below is a list of feedback that have been added for the site.
+          description_empty: No feedback have been added for the site.
       fields: *fields
       buttons: *buttons
     show:
-      section: "%{feedback_name}"
+      section: "Feedback from %{feedback_name}"
       header: Feedback Details
-      description: Below are the details we have for %{feedback_name}.
-      manage_description: You'll also find options for updating these details or removing %{feedback_name} from %{team_name} entirely.
+      description: Below are the details from the feedback left by %{feedback_name}.
+      manage_description: You'll also find options for updating or removing the feedback from the site entirely.
       fields: *fields
       buttons: *buttons
     form: &form
       buttons: *buttons
       fields: *fields
     new:
-      section: "New Feedback for %{team_name}"
-      header: New Feedback Details
-      description: Please provide the details of the new Feedback you'd like to add to %{team_name}.
+      section: "New Feedback"
+      header: New Feedback
+      description: Please provide the details of the feedback you'd like to leave for the admin team.
       form: *form
     edit:
       section: "%{feedback_name}"
       header: Edit Feedback Details
-      description: You can update the details or settings for %{feedback_name} below.
+      description: You can update the details or settings for the feedback from %{feedback_name} below.
       form: *form
     notifications:
       created: Feedback was successfully created.
       updated: Feedback was successfully updated.
-      destroyed: Feedback was successfully destroyed.
+      destroyed: Feedback was successfully deleted.
   account:
     feedback: *feedback
   activerecord:

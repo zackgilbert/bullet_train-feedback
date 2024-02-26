@@ -1,6 +1,6 @@
-<% feedback = feedback.accessible_by(current_ability) %>
+<% feedback = feedback.includes([:rich_text_user_feedback]).accessible_by(current_ability) %>
 <% team = @team %>
-<% context ||= team %>
+<% context ||= team || current_team %>
 <% collection ||= :feedback %>
 <% hide_actions ||= false %>
 <% hide_back ||= false %>
@@ -24,7 +24,7 @@
               <tr>
                 <%= render "shared/tables/select_all" %>
                 <th><%= t('.fields.giver.heading') %></th>
-                <th><%= t('.fields.url.heading') %></th>
+                <th><%= t('.fields.user_feedback.heading') %></th>
                 <%# 🚅 super scaffolding will insert new field headers above this line. %>
                 <th><%= t('.fields.created_at.heading') %></th>
                 <th class="text-right"></th>
